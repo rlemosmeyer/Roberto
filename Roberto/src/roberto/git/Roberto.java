@@ -1,5 +1,8 @@
 package roberto;
 
+// Este programa simula o funcionamento de uma calculadora numérica.
+
+//São importados diversos layouts, dimensões, painéis, bordas, etc.
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -17,12 +20,19 @@ public class CalculadoraGui extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JTextField display;
-
+	
+	//São incluídos os botões do teclado, sendo a numeração de 0 a 9, soma, subtração, divisão, multiplicação, potência, ligar.
+	
 	private String[] txtBotoesTeclado = new String[] { "1", "2", "3", "+", "4", "5", "6", "-", "7", "8", "9", "/", "0",
-			"^", "C", "CE" };
-
+			"^", "C", "CE", "OFF" };
+	
+	//Incluído o botão de desligar.
+	
 	public CalculadoraGui() {
 		this.setTitle("Calculadora");
+		
+		//A dimensão da calculadora.
+		
 		this.setSize(new Dimension(249, 328));
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.getContentPane().setLayout(new BorderLayout());
@@ -34,7 +44,9 @@ public class CalculadoraGui extends JFrame {
 		this.add(display, BorderLayout.PAGE_START);
 
 		JPanel panelTeclado = new JPanel(new GridLayout(4, 4));
-
+		
+		//Para string, exatamente ao que for teclado.
+		
 		for (String string : txtBotoesTeclado) {
 			JButton btn = new JButton(string);
 			panelTeclado.add(btn);
@@ -60,12 +72,13 @@ public class CalculadoraGui extends JFrame {
 		
 		btnCalcular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
+				
+				//O resultado é o que foi executado nos cálculos.
+				
 				String resultado = executaCalculo(display.getText());
 				display.setText(resultado);
 			}
 		});
-
-	}
 
 	protected String executaCalculo(String text) {
 		return "calcular";
@@ -81,7 +94,9 @@ public class CalculadoraGui extends JFrame {
 		}
 		display.setText(display.getText() + text);
 	}
-
+	
+	//Programa praticamente pronto, agora restam os testes e implementações.
+	
 	public static void main(String[] args) {
 		CalculadoraGui exemplo = new CalculadoraGui();
 		exemplo.setVisible(true);
